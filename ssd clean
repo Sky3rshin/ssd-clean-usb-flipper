@@ -1,0 +1,38 @@
+REM Flipper Zero - Windows DiskPart Setup
+REM Opens Command Prompt and launches DiskPart
+
+DELAY 1500
+
+REM Open Windows Run
+GUI r
+DELAY 800
+
+REM Request elevated Command Prompt
+STRING powershell -NoProfile -Command "Start-Process cmd -Verb RunAs"
+ENTER
+DELAY 2000
+
+REM Approve the Windows UAC prompt manually
+DELAY 5000
+
+REM Start DiskPart
+STRING diskpart
+ENTER
+DELAY 1500
+
+REM Display connected disks
+STRING list disk
+ENTER
+DELAY 1000
+
+REM Select disk 1
+STRING select disk 1
+ENTER
+DELAY 800
+
+REM Display details for verification
+STRING detail disk
+ENTER
+
+REM STOP: Verify the disk before proceeding.
+REM No erase commands execute automatically.
